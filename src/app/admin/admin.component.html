@@ -1,0 +1,30 @@
+<div class="admin-container">
+  <h2>Créer une ligne pour le CV</h2>
+
+  <!-- Formulaire pour ajouter une ligne -->
+  <form (ngSubmit)="addLine()">
+    <div>
+      <label for="lineTitle">Titre de la ligne:</label>
+      <input
+        id="lineTitle"
+        type="text"
+        [(ngModel)]="newLineTitle"
+        name="lineTitle"
+        required
+      />
+    </div>
+    <button type="submit" [disabled]="!newLineTitle">Ajouter</button>
+  </form>
+
+  <h3>Liste des lignes créées</h3>
+  <div *ngIf="cvLines.length > 0">
+    <ul>
+      <li *ngFor="let line of cvLines">
+        <strong>{{ line.id }}</strong>: {{ line.title }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="cvLines.length === 0">
+    <p>Aucune ligne n'a été ajoutée.</p>
+  </div>
+</div>
